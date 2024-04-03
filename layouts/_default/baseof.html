@@ -66,16 +66,6 @@
 			src: url('{{ ( printf "%s%s" .Site.Params.bannerFont ".woff2") | absURL }}') format('woff2'),
 				url('{{ ( printf "%s%s" .Site.Params.bannerFont ".woff") | absURL }}') format('woff');
 		}
-		/*  For variable font usage sometimes */
-		/*
-		@font-face {
-			font-family: 'Source Han Serif CN Variable';
-			src: url('{{"fonts/SourceHanSerifCN-VF.otf.woff2" | absURL }}') format('woff2');
-			font-weight: 1 999;
-			font-style: normal;
-			font-display: swap;
-		} */
-		/* noto-serif-sc-300 - latin_chinese-simplified */
 		@font-face {
 			font-family: 'Noto Serif CJK SC';
 			font-style: normal;
