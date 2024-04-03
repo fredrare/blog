@@ -206,7 +206,7 @@ a:focus {
 .c-rich-text code,
 .c-rich-text pre tt,
 .c-rich-text kbd {
-  @apply px-1 border border-java-400;
+  @apply px-1 border rounded border-java-400;
   background: repeating-linear-gradient(
     45deg,
     theme("colors.white"),
@@ -221,7 +221,7 @@ a:focus {
   background: none;
 }
 .c-rich-text pre {
-  @apply overflow-x-auto border border-solid rounded-lg border-java-500 bg-java-100;
+  @apply overflow-x-auto border border-solid rounded border-java-500 bg-java-100;
   padding: 1em 1.5em;
   display: block;
 }
