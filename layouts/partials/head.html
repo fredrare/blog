@@ -1,23 +1,26 @@
+{{- $title := .Site.Title | or .Title -}}
+{{- $description := .Site.Params.Description | or .Description -}}
+
 <!-- Primary Meta Tags -->
-<meta name="title" content="{{ .Title }}" />
-<meta name="description" content="{{ .Description }}" />
+<meta name="title" content="{{ $title }}" />
+<meta name="description" content="{{ $description }}" />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://fredrare.com/" />
-<meta property="og:title" content="{{ .Title }}" />
-<meta property="og:description" content="{{ .Description }}" />
+<meta property="og:url" content="{{ .RelPermalink }}" />
+<meta property="og:title" content="{{ $title }}" />
+<meta property="og:description" content="{{ $description }}" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary" />
-<meta property="twitter:url" content="https://fredrare.com/" />
-<meta property="twitter:title" content="{{ .Title }}" />
-<meta property="twitter:description" content="{{ .Description }}" />
+<meta property="twitter:url" content="{{ .RelPermalink }}" />
+<meta property="twitter:title" content="{{ $title }}" />
+<meta property="twitter:description" content="{{ $description }}" />
 
 <!-- Meta Tags Generated with https://metatags.io -->
 
 <style media="screen">
-/** Post image styles */
+/** Image styles */
 {{- with .Page.Resources.ByType "image" }}
   {{- range . -}}
   	{{- $src := . -}}
@@ -43,33 +46,6 @@
        }
   {{- end }}
 {{- end }}
-/** Page image styles */
-{{- with .Resources.ByType "image" }}
-  {{- range . -}}
-  	{{- $src := . -}}
-  	{{- $imgBd5 := md5 $src -}}
-  	{{- $bgStyle := print "aspect-ratio: " $src.Width " / " $src.Height ";" -}}
-  	{{- $LQIP_img := $src.Resize "20x jpg" | images.Filter (images.GaussianBlur 3) -}}
-  	{{- $LQIP_b64 := $LQIP_img.Content | base64Encode -}}
-  	{{- $bgLQIP := print "background: url(data:image/jpeg;base64," $LQIP_b64 ");" -}}
-       .imgB-{{ $imgBd5 }}-LQIP::before {
-          {{ $bgLQIP | safeCSS }}
-          {{ $bgStyle | safeCSS }}
-          background-size: cover;
-          background-repeat: no-repeat;
-          background-position: center;
-          content: ' ';
-          display: block;
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          animation: fade-in 1s ease-in-out reverse forwards;
-       }
-  {{- end }}
-{{- end }}
-
   @keyframes fade-in {
     0% {
       opacity: 0;

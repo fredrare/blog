@@ -16,7 +16,7 @@
 	{{ end }}
 
 	{{ $css := resources.Get "css/index.css" | fingerprint "md5" }}
-	<link rel="stylesheet" type="text/css" href="{{ $css.Permalink }}" />
+	<link rel="stylesheet" type="text/css" href="{{ $css.RelPermalink }}" />
 
 	{{ range .Site.Params.custom_css }}
 	<link rel="stylesheet" href="{{ relURL ($.Site.BaseURL) }}{{ . }}">

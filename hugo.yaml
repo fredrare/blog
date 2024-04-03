@@ -47,12 +47,6 @@ social:
   discord: https://discord.gg/tJa66GNhej
   twitch: https://www.twitch.tv/antitesista
   youtube: https://www.youtube.com/@antitesista
-  # gitlab: https://gitlab.com/
-  # instagram: http://example.com/
-  # mail: mailto:anon@example.com
-  # twitter: https://twitter.com/
-  # weibo: http://example.com/
-  # zhihu: http://example.com/
   # any icon in layouts/partials/svg can be used by the name without the -line.svg
 
 outputs:
