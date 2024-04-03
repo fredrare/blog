@@ -1,0 +1,7 @@
+<div class="md:flex-grow-0 font-light">
+  {{ if isset .Params "tags" }}
+  {{ $count := len .Params.tags }} {{ if gt $count 0 }} {{ range $k, $v := .Params.tags }}
+  <a class="post-taxonomy-category text-java-500 hover:text-medium-red-violet-400" href='{{"/tags/"| relURL}}{{ . | urlize }}'
+    >#{{ . }}</a
+  >{{ if lt $k (sub $count 1) }},{{ end }} {{ end }} {{ end }} {{ end }}
+</div>

@@ -1,10 +1,8 @@
 baseURL: 'https://fredrare.com/'
 languageCode: 'es-PE'
 title: 'Fredrare'
-theme: 'hugo-theme-tokiwa'
 
 DefaultContentLanguage: es
-author: Fredrare
 enableInlineShortcodes: true
 footnoteReturnLinkContents: ^
 hasCJKLanguage: true
@@ -62,3 +60,29 @@ outputs:
   - HTML
   - RSS
   - JSON
+
+# Theme-related info
+name: Fredrare's blog
+license: MIT
+licenselink: https://github.com/fredrare/blog/blob/master/LICENSE.md
+description: My personal blog, inspired by the theme tokiwa-iro (常磐色).
+homepage: https://github.com/fredrare/blog
+tags: 
+  - minimal
+  - website
+  - responsive
+  - blog
+features: 
+  - posts
+  - shortcodes
+  - related content
+  - comments
+min_version: 0.38
+author:
+  name: Fredrare
+  homepage: https://fredrare.com
+  repo: https://github.com/fredrare/blog
+original:
+  name: He Yeshuang
+  homepage: https://heysh.xyz
+  repo: https://github.com/heyeshuang/hugo-theme-tokiwa

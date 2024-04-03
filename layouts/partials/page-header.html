@@ -1,0 +1,34 @@
+{{ $dateOrder := div (sub .Date.Day 1) 7 | math.Floor | int }}
+{{ $suffixes := slice "st" "nd" "rd" "th" "th" }}
+<div>
+	<h2 class="flex justify-end gap-1 items-center">
+		{{- $image := resources.Get .Site.Params.Avatar -}}
+		{{- $resizedAvatar := $image.Resize "128x webp q100" -}}
+		<a href="{{ .Site.BaseURL }}" title="{{ .Site.Title }}" class="heading font-cursive icon">
+			<img class="h-12 m-0" src="{{ $resizedAvatar.RelPermalink }}" alt="Fredrare's Avatar" title="Fredrare's Avatar" />
+		</a>
+		<a href="{{ .Site.BaseURL }}" title="{{ .Site.Title }}" class="heading font-cursive icon">{{ .Site.Title }}</a>
+	</h2>
+</div>
+<h1 class="pt-2">
+	{{- .Title -}}
+</h1>
+{{with .Description}}
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">{{.}}</h3>
+{{end}}
+<div class="flex flex-wrap justify-end pt-2 ">
+	{{- partial "tags.html" . -}}
+	<time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+		{{- add $dateOrder 1 -}}
+		<sup>{{- index $suffixes $dateOrder -}}</sup>
+		{{- " " -}}
+		{{- slicestr .Date.Weekday.String 0 3 -}}
+		{{- ". of " -}}
+		{{- .Date.Month.String -}}
+		{{- ", " -}}
+		{{- .Date.Year -}}
+	</time>
+</div>
+{{ partial "toc.html" . }}
+<hr />
