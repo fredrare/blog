@@ -2,7 +2,7 @@
 <ul class="flex justify-between">
   {{ with $pag.First }}
   <li class="page-item">
-    <a href="{{ .URL }}" class="page-link" aria-label="First"
+    <a href="{{ "#" | or .URL }}" class="page-link" aria-label="First"
       ><span aria-hidden="true">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -28,6 +28,8 @@
       if
       $pag.HasPrev
       }}href="{{ $pag.Prev.URL }}"
+      {{ else }}
+      href="#"
       {{
       end
       }}
@@ -50,7 +52,7 @@
         </svg> </span
     ></a>
   </li>
-  <div class="flex-grow-3"></div>
+  <li class="flex-grow-3"></li>
   {{ $ellipsed := false }} {{ $shouldEllipse := false }} {{ range $pag.Pagers }} {{ $right := sub
   .TotalPages .PageNumber }} {{ $showNumber := or (le .PageNumber 3) (eq $right 0) }} {{ $showNumber
   := or $showNumber (and (gt .PageNumber (sub $pag.PageNumber 2)) (lt .PageNumber (add
@@ -58,14 +60,14 @@
   {{ else }} {{ $shouldEllipse = not $ellipsed }} {{ $ellipsed = true }} {{ end }} {{ if $showNumber
   }}
   <li class="page-item{{ if eq . $pag }} active{{ end }}">
-    <a class="page-link" href="{{ .URL }}">{{ .PageNumber }}</a>
+    <a class="page-link" href="{{ "#" | or .URL }}">{{ .PageNumber }}</a>
   </li>
   {{ else if $shouldEllipse }}
   <li class="page-item disabled"><span aria-hidden="true">&nbsp;&hellip;&nbsp;</span></li>
   {{ end }} {{ end }}
-  <div class="flex-grow-3"></div>
+  <li class="flex-grow-3"></li>
   <li class="page-item{{ if not $pag.HasNext }} disabled{{ end }}">
-    <a {{ if $pag.HasNext }}href="{{ $pag.Next.URL }}" {{ end }} class="page-link" aria-label="Next"
+    <a {{ if $pag.HasNext }}href="{{ $pag.Next.URL }}"{{ else }} href="#" {{ end }} class="page-link" aria-label="Next"
       ><span aria-hidden="true">
         <svg
           xmlns="http://www.w3.org/2000/svg"

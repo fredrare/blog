@@ -25,7 +25,7 @@
     <a href='{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}'>RSS</a>
   </li>
   {{ end }} {{ end }} {{ if .Site.Params.fuse }}
-  <div id="fastSearch" class="m-0">
+  <li id="fastSearch" class="m-0">
     <input
       id="searchInput"
       type="text"
@@ -34,6 +34,6 @@
       placeholder="search"
     />
     <ul id="searchResults" class="bg-gray-200 px-2 divide-y divide-gray-400"></ul>
-  </div>
+  </li>
   {{ end }}
 </ul>
