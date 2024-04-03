@@ -1,12 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: false,
   content: [
     "./src/**/*.{html,js}",
     "./layouts/**/*.html",
     // etc.
   ],
-  safelist: ["backdrop-blur-xl", "animate-show"],
   theme: {
     textIndent: {
       // defaults to {}

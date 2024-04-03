@@ -5,7 +5,7 @@
 		{{- $image := resources.Get .Site.Params.Avatar -}}
 		{{- $resizedAvatar := $image.Resize "128x webp q100" -}}
 		<a href="{{ .Site.BaseURL }}" title="{{ .Site.Title }}" class="heading font-cursive icon">
-			<img class="h-12 m-0" src="{{ $resizedAvatar.RelPermalink }}" alt="Fredrare's Avatar" title="Fredrare's Avatar" />
+			<img class="w-12 h-12 m-0" src="{{ $resizedAvatar.RelPermalink }}" alt="Fredrare's Avatar" title="Fredrare's Avatar" />
 		</a>
 		<a href="{{ .Site.BaseURL }}" title="{{ .Site.Title }}" class="heading font-cursive icon">{{ .Site.Title }}</a>
 	</h2>
