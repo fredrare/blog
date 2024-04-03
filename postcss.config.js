@@ -1,10 +1,7 @@
 const purgecss = require("@fullhuman/postcss-purgecss")({
   // Specify the paths to all of the template files in your project
   content: [
-    "./src/**/*.html",
-    "./src/**/*.vue",
-    "./src/**/*.js",
-    "./layouts/*.html",
+    "./src/**/*.{html,js}",
     "./layouts/**/*.html",
     // etc.
   ],

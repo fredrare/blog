@@ -15,10 +15,8 @@
 	<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 	{{ end }}
 
-	{{ $stylesheet := .Site.Data.webpack_assets.app }}
-	{{ with $stylesheet.css }}
-	<link href="{{ relURL (printf "%s%s" "dist/" .) }}" rel="stylesheet">
-	{{ end }}
+	{{ $css := resources.Get "css/index.css" | fingerprint "md5" }}
+	<link rel="stylesheet" type="text/css" href="{{ $css.Permalink }}" />
 
 	{{ range .Site.Params.custom_css }}
 	<link rel="stylesheet" href="{{ relURL ($.Site.BaseURL) }}{{ . }}">

@@ -1,0 +1,333 @@
+@charset "UTF-8";
+@import "normalize";
+
+/*! purgecss start ignore */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+.heading {
+  @apply font-serif font-medium leading-tight text-eucalyptus-700;
+}
+
+h1 {
+  @apply heading text-3xl;
+}
+
+@screen lg {
+  h1 {
+    @apply text-4xl;
+  }
+}
+
+h2 {
+  @apply heading text-2xl;
+}
+
+@screen lg {
+  h2 {
+    @apply text-3xl;
+  }
+}
+
+h3 {
+  @apply heading text-xl;
+}
+
+h4 {
+  @apply heading text-lg;
+}
+
+h5 {
+  @apply heading text-lg;
+}
+
+h6 {
+  @apply heading text-lg;
+}
+
+hr {
+  overflow: visible;
+  border: none;
+  border-bottom: 1px solid theme("colors.eucalyptus.300");
+  margin-bottom: 0.8em;
+  height: 5px;
+}
+
+hr.double-line {
+  border-top: 3px double theme("colors.eucalyptus.400");
+  text-align: center;
+  border-bottom: none;
+}
+
+hr.double-line:after {
+  content: "\2731  \2731  \2731";
+  display: inline-block;
+  position: relative;
+  top: -14px;
+  padding: 0 10px;
+  background: theme("colors.gray.100");
+  color: theme("colors.eucalyptus.400");
+  font-size: 14px;
+  font-family: sans-serif;
+}
+
+a:not(.icon) {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size cubic-bezier(0, 0.5, 0, 1) 0.3s;
+}
+a:not(.icon):hover,
+a:not(.icon):focus {
+  text-decoration: none;
+  background-size: 100% 2px;
+}
+
+a {
+  color: theme("colors.eucalyptus.500");
+}
+a:hover,
+a:focus {
+  color: theme("colors.java.500");
+}
+
+.a-gray a {
+  @apply text-gray-600;
+}
+.a-gray a:hover,
+.a-gray a:focus {
+  color: theme("colors.gray.400");
+}
+
+.c-rich-text {
+  @apply font-sans text-base leading-relaxed;
+}
+.c-rich-text ::selection {
+  color: theme("colors.java.100");
+  background-color: theme("colors.java.700");
+}
+.c-rich-text a {
+  color: theme("colors.eucalyptus.500");
+}
+.c-rich-text a:hover,
+.c-rich-text a:focus {
+  color: theme("colors.java.500");
+}
+.c-rich-text > * + * {
+  margin-top: 1.5rem;
+}
+.c-rich-text li {
+  margin-bottom: 0.25rem;
+}
+.c-rich-text li p {
+  display: inline;
+}
+.c-rich-text li:before {
+  @apply font-serif font-bold mb-1 text-sm text-eucalyptus-600 ml-4 mr-2;
+  display: marker;
+  content: counter(item, japanese-informal);
+  counter-increment: item;
+}
+.c-rich-text ul {
+  list-style-type: square;
+  list-style-position: inside;
+}
+.c-rich-text ol {
+  list-style-type: "";
+  list-style-position: inside;
+  counter-reset: item;
+}
+.c-rich-text li > ol,
+.c-rich-text li > ul {
+  margin-left: theme("spacing.4");
+}
+.c-rich-text .footnotes ol {
+  list-style-type: decimal;
+}
+.c-rich-text mark {
+  background-color: theme("colors.java.300");
+  border-bottom-color: theme("colors.java.600");
+  border-bottom-width: 2px;
+  padding: 2px;
+  margin: 0 5px;
+}
+.c-rich-text img {
+  @apply rounded-sm border-java-600;
+  margin: 0 auto;
+}
+.c-rich-text table {
+  @apply overflow-x-auto;
+  table-layout: auto;
+}
+.c-rich-text th,
+.c-rich-text td {
+  border-bottom-color: theme("colors.java.600");
+  border-bottom-width: 1px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.c-rich-text th {
+  border-top-width: 1px;
+  background-color: theme("colors.java.100");
+  border-top-color: theme("colors.java.600");
+}
+.c-rich-text b,
+.c-rich-text strong {
+  font-weight: theme("fontWeight.bold");
+  color: theme("colors.eucalyptus.600");
+}
+.c-rich-text i,
+.c-rich-text em {
+  font-style: italic;
+}
+.c-rich-text sub,
+.c-rich-text sup {
+  font-size: theme("fontSize.xs");
+  vertical-align: baseline;
+}
+.c-rich-text acronym,
+.c-rich-text abbr {
+  border-bottom: 1px dotted;
+  font-variant: normal;
+  text-decoration: none;
+}
+.c-rich-text abbr {
+  cursor: help;
+}
+.c-rich-text pre,
+.c-rich-text code,
+.c-rich-text pre tt {
+  @apply font-mono;
+}
+.c-rich-text code,
+.c-rich-text pre tt,
+.c-rich-text kbd {
+  @apply px-1 border border-java-400;
+  background: repeating-linear-gradient(
+    45deg,
+    theme("colors.white"),
+    theme("colors.white") 1px,
+    theme("colors.java.100") 0,
+    theme("colors.java.100") 5px
+  );
+}
+.c-rich-text pre code,
+.c-rich-text kbd kbd {
+  @apply px-0 border-none;
+  background: none;
+}
+.c-rich-text pre {
+  @apply overflow-x-auto border border-solid rounded-lg border-java-500 bg-java-100;
+  padding: 1em 1.5em;
+  display: block;
+}
+.c-rich-text .highlight {
+  @apply overflow-x-auto;
+}
+.c-rich-text blockquote {
+  @apply relative ml-8 pr-6 pl-3 text-gray-600;
+  @apply border-l-2 border-java-500;
+}
+
+.page-item {
+  @apply flex-grow;
+}
+
+.page-item.disabled a {
+  @apply text-gray-400;
+}
+
+.page-item.active a {
+  @apply text-java-400;
+}
+
+@media all and (min-width: 1024px) {
+  .waterfall {
+    column-count: 2;
+    column-gap: 1rem;
+  }
+  .pin {
+    break-inside: avoid;
+    padding: 5px;
+  }
+}
+
+/* noto-sans-sc-400 - latin_chinese-simplified */
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .bg-opacity-custom {
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+  }
+}
+
+/******************Table of Contents' Style***********************/
+details.toc nav {
+  overflow-x: hidden;
+}
+
+details.toc nav ul {
+  list-style: disc;
+  list-style-position: inside;
+  direction: rtl;
+}
+details.toc nav ul ul {
+  list-style: circle;
+  list-style-position: inside;
+  margin-right: 1em;
+}
+
+details.toc nav ul > li {
+  @apply font-light;
+  @apply text-java-700;
+}
+details.toc nav ul > li a {
+  @apply text-java-700;
+}
+
+details.toc nav ul ul > li {
+  @apply leading-normal;
+  @apply text-sm;
+  @apply text-java-600;
+}
+details.toc nav ul ul > li a {
+  @apply text-java-600;
+}
+
+details.toc > summary {
+  cursor: pointer;
+  list-style: none;
+  outline: none;
+}
+
+details.toc > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.toc hr {
+  border-top: 1px dotted theme("colors.java.400");
+  border-bottom: 1px dotted #fff;
+  margin-top: 0.8em;
+  margin-bottom: 0.4em;
+  text-align: center;
+}
+
+details.toc hr:after {
+  content: "Table of Contents";
+  display: inline-block;
+  position: relative;
+  top: -19px;
+  padding: 0 5px;
+  @apply bg-opacity-75;
+  background: theme("colors.gray.100");
+  color: theme("colors.java.700");
+  font-size: 16px;
+  font-family: theme("fontFamily.serif");
+}
+
+/*! purgecss end ignore */
+
+@import "tailwindcss/utilities";

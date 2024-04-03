@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  purge: false,
   content: [
     "./src/**/*.{html,js}",
     "./layouts/**/*.html",
@@ -121,16 +122,4 @@ module.exports = {
     },
   },
   variants: {},
-  // plugins: [
-  //   require('@tailwindcss/typography'),
-  //   // ...
-  // ],
-  // plugins: [require('tailwindcss-typography')({
-  //   // all these options default to the values specified here
-  //   ellipsis: true,         // whether to generate ellipsis utilities
-  //   hyphens: true,          // whether to generate hyphenation utilities
-  //   kerning: true,          // whether to generate kerning utilities
-  //   textUnset: true,        // whether to generate utilities to unset text properties
-  //   componentPrefix: 'c-',  // the prefix to use for text style classes
-  // }),],
 }
