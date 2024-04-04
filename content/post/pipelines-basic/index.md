@@ -31,7 +31,6 @@ command1 | command2 | command3 | command4 #...
 El flujo exacto será explicado más adelante. No obstante, desde ya se puede ver que es una sintaxis bastante intuitiva y limpia. Da la idea de que los comandos siguen una línea uno luego de otro. Esta es la razón del nombre, porque *pipe* significa tubería. Así que podemos entender que, a partir de un comando principal, por donde entran datos, vamos pasándolos por una tubería, lugar en el que serán tratados de distintas maneras por distintos comandos. Todo esto para que obtengamos lo que queremos al final de la tubería: un *output* limpio.
 
 ## Ejemplos
-
 ### Filtrar la salida con `grep`
 Los pipes son muy usados en diversos contextos. Uno de los más comunes va de usar grep para poder filtrar la salida de un comando dado.
 

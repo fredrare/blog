@@ -11,32 +11,26 @@ author: Fredrare
 ---
 
 ## Introducción
-
 La inmutabilidad es un concepto que se basa en una idea muy sencilla: si algo tiene un valor, no puede cambiar. Esto no solo se ve en la programación, sino también en la vida real. Podríamos identificar rápidamente objetos prácticamente inmutables a nuestro al rededor: el sol, la luna, las estrellas, etc.
 La confusión entra, para quienes quieren aprender a programar, cuando les dicen que hay ciertos elementos dentro de la programación que tienen esta característica: son inmutables.
 
 Hoy estudiaremos cómo usar la inmutabilidad para hacer nuestro código más legible, menos propenso a errores y cómo sacarle la vuelta. En general, aprenderemos a cómo cambiar nuestro *mindset* con respecto a las variables
 
 ## Mutabilidad e inmutabilidad
-
 La definición es sencilla: algo inmutable no puede cambiar. Esto se aplica tanto a referencias como a objetos. Primero tracemos la diferencia entre estos dos conceptos con un ejemplo: un hotel.
 
 ### Referencias
-
 En el hotel tenemos habitaciones y tarjetas que nos permiten entrar a ellas. Cada tarjeta está asignada a un solo cuarto y nos permite saber qué hay en él. En este contexto, la tarjeta estaría relacionada con la habitación: haría **referencia** a la habitación. Sabemos que, cuando alguien deja este lugar, entregará la tarjeta en la recepción y la tarjeta dejará de estar asignada a ningún lugar. Cuando llegue otra persona, la tarjeta será reprogramada y, automáticamente, le permitirá entrar a una suite nueva. Ahora la misma tarjeta de antes está relacionada con otra habitación: hace **referencia** a otra habitación.
 
 ### Objetos
-
 En este mismo hotel, las habitaciones referidas por las tarjetas son entidades en sí mismas. Cada una tiene un precio distinto, diferentes prestaciones y puede hacer más o menos cosas por quien se aloje en ellas. Estas **entidades**, que poseen propiedades y pueden hacer cosas, se llaman objetos. Estos, entonces, no son más que una representación. Una habitación puede ser un objeto y la cama y las almohadas que hay dentro de ella también son objetos, ya que cada una de estas también tiene atributos y utilidades distintas. Los **objetos son representaciones**.
 
 #### Objetos mutables
-
 Lo más normal sería pensar que los objetos pueden cambiar, ya que sabemos que es posible que las almohadas tengan una nueva funda o que se coloquen nuevas sábanas. De la misma manera, es posible que pinten la habitación o que se reemplacen las cortinas.
 
 Otro tipo de cambios que podríamos observar sería cuando tenemos las latas de gaseosa en el cooler y vemos cómo la cantidad de líquido que tienen va disminuyendo conforme vamos tomándolo. También podríamos medir cómo disminuye la temperatura de verano cuando se prende el A.C. y cómo se oxidan las barandillas del balcón por estar cerca al mar.
 
 #### Objetos inmutables
-
 Si se pusieron a analizar los ejemplos anteriores verán que les he presentado dos ejemplos de naturalezas distintas. En primer caso hemos visto que los objetos en sí no han cambiado, sino que lo han hecho algunas propiedades anexas a estos.
 1. Si cambio la funda de la almohada, la almohada, su funda anterior y la nueva siguen siendo todas iguales. Solo he cambiado las relaciones entre ellas, mientras que estas no han mutado en lo absoluto.
 
@@ -123,7 +117,6 @@ Ya vimos que const nos permite declarar constantes. Y también sabemos que las c
 De esta manera, estamos combinando de una forma muy sencilla la inmutabilidad de una referencia con la mutabilidad de un objeto. Ambos conceptos no son incompatibles y, de hecho, es una buena práctica hacer esto.
 
 #### ¿Por qué estaría bien usar constantes?
-
 Usar `const` permite que nos aseguremos de que siempre estamos trabajando con el mismo objeto y, gracias a esto, evita muchas confusiones. Dado que el objeto en sí puede mutar, usar una constante no impide que la lógica de nuestro programa sea fluida. Lo único que hace es ordenar nuestro código para que no confundamos ni mezclemos referencias de una forma que haga ilegible el código en el futuro.
 
 La regla de oro que se podría usar sería la siguiente: "Si no necesito reasignar el valor de mi variable, usaré `const`". Ya que es muy probable que creen variables que no modifiquen su valor, aplicando esta idea se darán cuenta de que su código está lleno de constantes que antes no habían notado, porque siempre las consideramos como variables. Y las variables, gracias a la mutabilidad, no siempre necesitan ser, justamente, variables.
