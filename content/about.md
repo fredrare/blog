@@ -1,5 +1,5 @@
 ---
-title: About
+title: Información
 description: Un poco sobre esta página y sobre mí
 date: 2024-04-02
 aliases: 

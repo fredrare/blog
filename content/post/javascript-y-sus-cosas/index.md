@@ -2,7 +2,7 @@
 title: Javascript y sus cositas
 description: Javascript puede ser un poco confuso a veces. Mira cómo funcionan algunas de sus rarezas jajaja
 date: 2021-01-09
-aliases: ["javascript","weird","rare", "raro"]
+aliases: ["javascript","js","weird","rare", "raro"]
 tags:
   - programación
   - javascript

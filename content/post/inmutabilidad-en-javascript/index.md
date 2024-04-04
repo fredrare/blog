@@ -2,7 +2,7 @@
 title: Inmutabilidad en Javascript
 description: La inmutabilidad es genial y deberíamos usarla tanto como podamos. ¡No da tanto miedo como crees!
 date: 2021-04-21
-aliases: ["javascript","immutabilidad"]
+aliases: ["javascript","js","immutabilidad"]
 tags:
   - programación
   - javascript
