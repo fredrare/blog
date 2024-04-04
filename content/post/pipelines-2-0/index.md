@@ -136,7 +136,6 @@ maim | pbcopy -t image/png
 Así se entiende más el comando y se puede ver que un alias no le quita la capacidad de aceptar más parámetros al comando original.
 
 #### Alias para decodificar Base64
-
 Si te dedicas al hacking, probablemente veas texto en Base64 muy seguido. Yo uso este alias para decodificar el texto automáticamente. Aquí, partiré de que ya tengo el alias de `pbpaste` creado.
 
 ```bash
