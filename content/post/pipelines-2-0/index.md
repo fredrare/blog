@@ -16,7 +16,7 @@ Ahora veremos pipes más complejos que manejan más que texto plano, te permiten
 
 ## Ideas
 ### Capturar pantalla al portapapeles
-Me gusta usar [`maim`](https://github.com/naelstrof/maim) para poder tomar capturas de pantalla, porque la salida del comando va directamente a `stdout`. Así, puedo pasársela a `xclip`, una aplicación que me permite colocar el resultado en el portapapeles directamente como una imagen si estoy usando [X](https://en.wikipedia.org/wiki/X_Window_System). Entonces, podría hacer realidad lo que propongo con el siguiente comando.
+Me gusta usar <code>[maim](https://github.com/naelstrof/maim)</code> para poder tomar capturas de pantalla, porque la salida del comando va directamente a `stdout`. Así, puedo pasársela a `xclip`, una aplicación que me permite colocar el resultado en el portapapeles directamente como una imagen si estoy usando [X](https://en.wikipedia.org/wiki/X_Window_System). Entonces, podría hacer realidad lo que propongo con el siguiente comando.
 
 ```bash
 maim | xclip -selection clipboard -t image/png
@@ -57,7 +57,7 @@ alias post="curl -F 'f:1=<-' ix.io"
 cat test.py | post
 ```
 
-### Usar [`awk`](https://en.wikipedia.org/wiki/AWK)
+### Usar <code>[awk](https://en.wikipedia.org/wiki/AWK)</code>
 `awk` es una deidad. Se trata de un lenguaje muy potente de scripting que también viene incluido como comando en sistemas tipo Unix y permite manipular *strings*.
 
 Veamos cómo lo usaría para saber qué servicios mantienen puertos abiertos en mi pc.
@@ -96,7 +96,7 @@ Con este comando, puedo determinar qué puertos tengo abiertos y el PID de cada 
 > Tengo 4 puertos abiertos.
 >
 > El puerto `22` lo usa `ssh` para permitirme acceder a la terminal desde otro dispositivo y lo estoy usando con IPv4 e IPv6. Puedo acceder por este puerto desde cualquier host.
-> 
+>
 > El puerto `631` lo usa `cups` para mantener mi servicio de impresiones. También funciona en IPv4 e IPv6. Solo puedo acceder por aquí desde localhost.
 
 Se puede notar fácilmente que con un par de pruebas se puede lograr el *output* deseado. Solo es necesario saber qué herramientas existen para lo que queremos hacer y cómo usarlas.

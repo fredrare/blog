@@ -125,9 +125,9 @@ a:focus {
   display: inline;
 }
 .c-rich-text li:before {
-  @apply font-serif font-bold mb-1 text-sm text-eucalyptus-600 ml-4 mr-2;
+  @apply font-serif font-bold mb-1 text-sm text-eucalyptus-600 ml-4 mr-2 rotate-45;
   display: marker;
-  content: counter(item, japanese-informal);
+  content: counter(item, hiragana);
   counter-increment: item;
 }
 .c-rich-text ul {
@@ -206,14 +206,7 @@ a:focus {
 .c-rich-text code,
 .c-rich-text pre tt,
 .c-rich-text kbd {
-  @apply px-1 border rounded border-java-400;
-  background: repeating-linear-gradient(
-    45deg,
-    theme("colors.white"),
-    theme("colors.white") 1px,
-    theme("colors.java.100") 0,
-    theme("colors.java.100") 5px
-  );
+  @apply px-1 rounded bg-java-100 border border-java-300;
 }
 .c-rich-text pre code,
 .c-rich-text kbd kbd {

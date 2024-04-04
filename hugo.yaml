@@ -1,5 +1,5 @@
 baseURL: '/'
-languageCode: 'es-PE'
+languageCode: 'es'
 title: 'Fredrare'
 
 DefaultContentLanguage: es
@@ -15,7 +15,6 @@ markup:
       unsafe: true
 
 params:
-  bannerFont: fonts/SourceHanSerifCN-VF.otf
   description: Just an acoustic vibing weeb
   env: production # for Google Analytics and DISQUS.
   avatar: /images/anti.png 

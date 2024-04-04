@@ -36,36 +36,10 @@
 	{{ if or .Params.math .Site.Params.math }}
 	{{ partial "math.html" . }}
 	{{ end }}
-	{{ if ne $.Site.LanguageCode "en"}}
-	<!--pangu.js-->
-	<script>
-		(function (u, c) {
-			var d = document,
-				t = 'script',
-				o = d.createElement(t),
-				s = d.getElementsByTagName(t)[0];
-			o.src = u;
-			if (c) {
-				o.addEventListener('load', function (e) {
-					c(e);
-				});
-			}
-			s.parentNode.insertBefore(o, s);
-		})('{{"lib/pangu.min.js"|absURL}}', function () {
-			pangu.spacingPage();
-		});
-	</script>
-	{{end}}
+
 	<!-- @font-face for Chinese -->
 	{{ if .Site.Params.useChineseFonts}}
 	<style type="text/css" media="screen, print">
-		@font-face {
-			font-family: "FancyTitleFont";
-			font-style: normal;
-			font-display: swap;
-			src: url('{{ ( printf "%s%s" .Site.Params.bannerFont ".woff2") | absURL }}') format('woff2'),
-				url('{{ ( printf "%s%s" .Site.Params.bannerFont ".woff") | absURL }}') format('woff');
-		}
 		@font-face {
 			font-family: 'Noto Serif CJK SC';
 			font-style: normal;

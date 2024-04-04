@@ -2,7 +2,7 @@
 := .Site.GetPage "section" .Section }}
 <article>
   <section class="mx-auto content">
-    <div class="c-rich-text">{{- .Content -}}</div>
+    <div class="c-rich-text">{{- .Content | replaceRE "(<h[2-9] id=\"([^\"]+)\".+)(</h[2-9]+>)" "${1}&nbsp;<a href=\"#${2}\">\u00a7</a>${3}" | safeHTML -}}</div>
   </section>
 </article>
 {{ end }} {{ define "aside" }} {{ partial "page-aside.html" . }} {{ end }} {{ define "footer" }} {{

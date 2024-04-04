@@ -6,7 +6,11 @@
 <meta name="description" content="{{ $description }}" />
 
 <!-- Open Graph / Facebook -->
+{{ if eq .Type "post" }}
+<meta property="og:type" content="article" />
+{{ else }}
 <meta property="og:type" content="website" />
+{{ end }}
 <meta property="og:url" content="{{ .RelPermalink }}" />
 <meta property="og:title" content="{{ $title }}" />
 <meta property="og:description" content="{{ $description }}" />
