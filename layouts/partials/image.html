@@ -24,7 +24,7 @@
 	the second option and avoid the conditional altogether.
 */}}
 {{- $imgBd5 := md5 $src -}}
-<div class="relative max-w-full mx-auto rounded overflow-hidden imgB-{{ $imgBd5 }}-LQIP">
+<div class="relative max-w-full mx-auto rounded overflow-hidden imgB-{{ $imgBd5 }}-LQIP flex flex-col gap-2 items-center">
 {{/*
 	Now we'll build the `picture` which modern browsers use to decide
 	which image, and which format thereof, to show. Remember to put
@@ -46,7 +46,7 @@
 			width="{{ $src.Width }}"
 			height="{{ $src.Height }}"
 			alt="{{ .Text }}"
-			title="{{ .Title }}"
 			loading="lazy"
 		/>
+		<span class="text-sm text-gray-600 font-light">{{ .Text }}</span>
 </div>

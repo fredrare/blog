@@ -6,7 +6,6 @@
     "type": "git",
     "url": "https://github.com/fredrare/blog"
   },
-  "main": "index.js",
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
@@ -35,6 +34,7 @@
     "dev": "wp --config webpack/dev.config.js",
     "build": "tailwindcss -i ./assets/css/input.css -o ./assets/css/index.css --jit --minify && cross-env NODE_ENV=production wp --config webpack/prod.config.js",
     "test": "tailwindcss -i ./assets/css/input.css -o ./assets/css/index.css --jit --minify --watch",
-    "start": "npm run build"
+    "start": "npm run build",
+    "styles": "tailwindcss -i ./assets/css/input.css -o ./assets/css/index.css --jit --minify"
   }
 }

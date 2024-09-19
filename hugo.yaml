@@ -28,11 +28,11 @@ menu:
 # Shown in the side menu.
   main:
     - identifier: post
-      name: Archivo
+      name: Archive
       url: /post/
       weight: 1
     - identifier: about
-      name: Bio
+      name: About
       url: /about/
       weight: 3
 

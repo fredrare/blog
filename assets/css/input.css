@@ -124,14 +124,19 @@ a:focus {
 .c-rich-text li p {
   display: inline;
 }
-.c-rich-text li:before {
+.c-rich-text ol li:before {
   @apply font-serif font-bold mb-1 text-sm text-eucalyptus-600 ml-4 mr-2 rotate-45;
   display: marker;
   content: counter(item, hiragana);
   counter-increment: item;
 }
+.c-rich-text ul li:before {
+  @apply font-serif font-bold mb-1 text-sm text-eucalyptus-600 fill-eucalyptus-600 ml-4 mr-2 rotate-45;
+  display: marker;
+  content: "◦";
+}
 .c-rich-text ul {
-  list-style-type: square;
+  list-style-type: "";
   list-style-position: inside;
 }
 .c-rich-text ol {
