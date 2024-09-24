@@ -77,12 +77,22 @@ a:not(.icon) {
   background-position: 0% 100%;
   background-repeat: no-repeat;
   background-size: 0% 2px;
-  transition: background-size cubic-bezier(0, 0.5, 0, 1) 0.3s;
+  transition: background-size cubic-bezier(0, 0.5, 0, 1) 150ms;
 }
 a:not(.icon):hover,
 a:not(.icon):focus {
   text-decoration: none;
   background-size: 100% 2px;
+}
+a:has(*) {
+  background-size: 0% 2px !important;
+}
+a:not(.icon) code {
+  transition: border-color cubic-bezier(0, 0.5, 0, 1) 150ms;
+}
+a:not(.icon):hover code,
+a:not(.icon):focus code {
+  @apply border-java-500;
 }
 
 a {

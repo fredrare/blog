@@ -10,13 +10,13 @@ author: Fredrare
 ---
 
 ## Introducción
-Ya vimos cómo funcionan los pipelines en este post, así que ahora podemos usar pipes de una manera un poco más útil e interesante. Si no lo has leído y no sientes comodidad al usarlos, te sugiero hacerlo.
+Ya vimos cómo funcionan los pipelines en [este post](../pipelines-basic/), así que ahora podemos usar pipes de una manera un poco más útil e interesante. Si no lo has leído y no sientes comodidad al usarlos, te sugiero hacerlo.
 
 Ahora veremos pipes más complejos que manejan más que texto plano, te permiten manipular el portapapeles, hacer fetch a algunas apis y, además, postear tus resultados en internet. Recuerda que solo son ideas, así que puedes usarlas como base para tus propios scripts, solo tomarlas como referencia para algo nada similar, copiarlas o de plano ignorarlas por completo jajajaja
 
 ## Ideas
 ### Capturar pantalla al portapapeles
-Me gusta usar <code>[maim](https://github.com/naelstrof/maim)</code> para poder tomar capturas de pantalla, porque la salida del comando va directamente a `stdout`. Así, puedo pasársela a `xclip`, una aplicación que me permite colocar el resultado en el portapapeles directamente como una imagen si estoy usando [X](https://en.wikipedia.org/wiki/X_Window_System). Entonces, podría hacer realidad lo que propongo con el siguiente comando.
+Me gusta usar [`maim`](https://github.com/naelstrof/maim) para poder tomar capturas de pantalla, porque la salida del comando va directamente a `stdout`. Así, puedo pasársela a `xclip`, una aplicación que me permite colocar el resultado en el portapapeles directamente como una imagen si estoy usando [X](https://en.wikipedia.org/wiki/X_Window_System). Entonces, podría hacer realidad lo que propongo con el siguiente comando.
 
 ```bash
 maim | xclip -selection clipboard -t image/png
@@ -41,23 +41,23 @@ Aquí podemos ver una sintaxis un poco más compleja, porque he usado una [susti
 ### Publicar la salida de un comando en internet
 Supongamos que quiero publicar el código de un pequeño script que estoy haciendo en internet para dárselo a alguien más. Una forma muy común sería usar pastebin, pero gastaría tiempo entrando a la página y poniendo los detalles de lo que quiero publicar.
 
-Por eso existe una página llamada [ix.io](http://ix.io/). Si entramos, podremos ver que tienen un manual bastante útil y podríamos hacer algo como lo siguiente.
+Por eso existe una página llamada ~~[ix.io](http://ix.io/) (fue dada de baja)~~ [pb1n.de](http://pb1n.de). Si entramos, podremos ver que tienen un manual bastante útil y podríamos hacer algo como lo siguiente.
 
 ```bash
-cat test.py | curl -F 'f:1=<-' ix.io
+cat test.py | curl -F 'f=@-' pb1n.de
 ```
 
 A mí me gusta tener el segundo comando de ese *pipeline* en un alias llamado `post`, de forma que se vuelve bastante intuitivo usar el comando luego. El código sería el siguiente:
 
 ```bash
 # Este es mi alias
-alias post="curl -F 'f:1=<-' ix.io"
+alias post="curl -F 'f=@-' pb1n.de"
 
 # Y lo uso de esta manera
 cat test.py | post
 ```
 
-### Usar <code>[awk](https://en.wikipedia.org/wiki/AWK)</code>
+### Usar [`awk`](https://en.wikipedia.org/wiki/AWK)
 `awk` es una deidad. Se trata de un lenguaje muy potente de scripting que también viene incluido como comando en sistemas tipo Unix y permite manipular *strings*.
 
 Veamos cómo lo usaría para saber qué servicios mantienen puertos abiertos en mi pc.
@@ -104,7 +104,7 @@ Se puede notar fácilmente que con un par de pruebas se puede lograr el *output*
 ### Hacer tu vida más fácil con aliases
 Hemos visto que los *pipelines* pueden ser muy útiles porque son modulares y podemos combinar comandos a nuestro gusto. No obstante, si los comandos son muy grandes, puede ser una tarea algo aburrida usarlos en cadena. Para liberarte de ese problema, puedes usar aliases, como en el caso anterior.
 
-Claramente, `post` es mucho más fácil de leer que `curl -F 'f:1=<-' ix.io`. Así que veamos cómo podemos acortar nuestros comandos de arriba para hacerlos más sencillos. **No es necesario usar aliases para todo**. Yo prefiero solo usarlos para comandos que uso constantemente en muchos *pipes*.
+Claramente, `post` es mucho más fácil de leer que `curl -F 'f=@-' pb1n.de`. Así que veamos cómo podemos acortar nuestros comandos de arriba para hacerlos más sencillos. **No es necesario usar aliases para todo**. Yo prefiero solo usarlos para comandos que uso constantemente en muchos *pipes*.
 
 #### Alias de copy paste
 macOS viene con dos comandos de manejo de portapapeles por defecto: `pbcopy` y `pbpaste`. Ambos se usan muy ampliamente en *pipelines*, pero no vienen incluidos fuera de macOS. Pero ***fear no more***, porque podemos replicar ese mismo comportamiento en X. Solo necesitamos crear dos aliases con `xclip`, como en el primer ejemplo de este post.

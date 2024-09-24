@@ -1,0 +1,8 @@
+<a
+  href="{{ .Destination | safeURL }}"
+  title="{{ .Title }}"
+  {{ if or ( hasPrefix .Destination "//" ) ( hasPrefix .Destination "http" ) }}
+    target="_blank"
+    rel="noreferrer"
+  {{ end }}
+  >{{ .Text | safeHTML }}</a>

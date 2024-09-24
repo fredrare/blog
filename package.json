@@ -34,7 +34,10 @@
     "dev": "wp --config webpack/dev.config.js",
     "build": "tailwindcss -i ./assets/css/input.css -o ./assets/css/index.css --jit --minify && cross-env NODE_ENV=production wp --config webpack/prod.config.js",
     "test": "tailwindcss -i ./assets/css/input.css -o ./assets/css/index.css --jit --minify --watch",
-    "start": "npm run build",
+    "start": "tailwindcss -i ./assets/css/input.css -o ./assets/css/index.css --jit --minify && hugo server --disableFastRender",
     "styles": "tailwindcss -i ./assets/css/input.css -o ./assets/css/index.css --jit --minify"
+  },
+  "dependencies": {
+    "caniuse-lite": "latest"
   }
 }

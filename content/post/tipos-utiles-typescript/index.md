@@ -12,7 +12,7 @@ author: Fredrare
 
 ## Introducción
 TypeScript nos sirve principalmente para poder definir tipos que nos advierten de errores en *build-time*. Bajo esa premisa, la principal ventaja que nos brinda sobre JavaScript es que nos advierte de errores que **vamos** a tener si hacemos algo mal en el código con respecto a los tipos de datos que mandamos de un lugar a otro en nuestro código. En este sentido, en este artículo usaremos a TypeScript como una herramienta de metaprogramación y veremos cómo podemos aplicar lógica condicional y repetitiva en nuestros amados tipos con dos ejemplos sencillos.
-Antes de comenzar, quiero destacar lo siguiente estará sumamente simplificado y habrá casos de uso en los que el ejemplo "subóptimo" será el mejor.
+Antes de comenzar, considera que lo siguiente estará sumamente simplificado y habrá casos de uso en los que el ejemplo "subóptimo" será el mejor.
 
 ## Llaves mutuamente excluyentes
 Imaginemos que tenemos una función que recibe un objeto como único parámetro. Para efectos prácticos, digamos que el objeto es de tipo `Rect`, que representa un rectángulo. Así que podríamos definir Rect de la siguiente manera:
@@ -126,7 +126,7 @@ type Exclusive<T> = {
 ```
 
 Ya tiene casi la forma que esperamos. Ahora solo nos queda hacer que todas las llaves negadas sean opcionales, para que TypeScript no nos obligue a ponerles un valor imposible, ya que todas se encuentran con `never`.
-```javascript
+```typescript
 // Exclusive<T> es ({ a: number; b?: never }) | ({ b: number; a?: never })
 type Exclusive<T> = {
   [Key in keyof T]:
