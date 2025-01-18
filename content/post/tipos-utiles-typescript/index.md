@@ -126,7 +126,7 @@ type Exclusive<T> = {
 ```
 
 Ya tiene casi la forma que esperamos. Ahora solo nos queda hacer que todas las llaves negadas sean opcionales, para que TypeScript no nos obligue a ponerles un valor imposible, ya que todas se encuentran con `never`.
-```typescript
+```javascript
 // Exclusive<T> es ({ a: number; b?: never }) | ({ b: number; a?: never })
 type Exclusive<T> = {
   [Key in keyof T]:

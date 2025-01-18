@@ -30,7 +30,8 @@
   	{{- $src := . -}}
   	{{- $imgBd5 := md5 $src -}}
   	{{- $bgStyle := print "aspect-ratio: " $src.Width " / " $src.Height ";" -}}
-  	{{- $LQIP_img := $src.Resize "20x jpg" | images.Filter (images.GaussianBlur 3) -}}
+    {{- $resizeFilter := images.Process "resize 20x jpg" -}}
+  	{{- $LQIP_img := $src| images.Filter $resizeFilter (images.GaussianBlur 3) -}}
   	{{- $LQIP_b64 := $LQIP_img.Content | base64Encode -}}
   	{{- $bgLQIP := print "background: url(data:image/jpeg;base64," $LQIP_b64 ");" -}}
        .imgB-{{ $imgBd5 }}-LQIP::before {

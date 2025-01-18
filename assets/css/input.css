@@ -95,6 +95,14 @@ a:not(.icon):focus code {
   @apply border-java-500;
 }
 
+:is(h2, h3, h4, h5, h6) .permalink {
+  opacity: 0;
+  transition: opacity cubic-bezier(0, 0.5, 0, 1) 300ms;
+}
+:is(h2, h3, h4, h5, h6):hover .permalink, :is(h2, h3, h4, h5, h6):focus-visible .permalink {
+  opacity: 1;
+}
+
 a {
   color: theme("colors.eucalyptus.500");
 }
@@ -126,7 +134,13 @@ a:focus {
   color: theme("colors.java.500");
 }
 .c-rich-text > * + * {
-  margin-top: 1.5rem;
+  @apply mt-6;
+}
+.c-rich-text > p + p {
+  @apply mt-4;
+}
+.c-rich-text > :is(h2, h3, h4, h5, h6) + * {
+  @apply mt-4;
 }
 .c-rich-text li {
   margin-bottom: 0.25rem;

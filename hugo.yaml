@@ -9,7 +9,7 @@ hasCJKLanguage: true
 
 markup:
   highlight:
-    style: monokailight
+    style: xcode
   goldmark:
     renderer:
       unsafe: true
@@ -23,6 +23,16 @@ params:
   useChineseFonts: true 
   postDateFormat: 2006-1-2
   themeColor: "#f1f5f9"
+  social:
+    github: https://github.com/fredrare
+    discord: https://discord.gg/tJa66GNhej
+    twitch: https://www.twitch.tv/antitesista
+    youtube: https://www.youtube.com/@antitesista
+  author:
+    name: Fredrare
+    homepage: https://fredrare.com
+    repo: https://github.com/fredrare/blog
+
 
 menu:
 # Shown in the side menu.
@@ -41,13 +51,6 @@ taxonomies:
   series: series
   tag: tags
 
-social:
-  github: https://github.com/fredrare
-  discord: https://discord.gg/tJa66GNhej
-  twitch: https://www.twitch.tv/antitesista
-  youtube: https://www.youtube.com/@antitesista
-  # any icon in layouts/partials/svg can be used by the name without the -line.svg
-
 outputs:
   home:
   - HTML
@@ -60,21 +63,20 @@ license: MIT
 licenselink: https://github.com/fredrare/blog/blob/master/LICENSE.md
 description: My personal blog, inspired by the theme tokiwa-iro (常磐色).
 homepage: https://github.com/fredrare/blog
+
 tags: 
   - minimal
   - website
   - responsive
   - blog
+
 features: 
   - posts
   - shortcodes
   - related content
   - comments
 min_version: 0.38
-author:
-  name: Fredrare
-  homepage: https://fredrare.com
-  repo: https://github.com/fredrare/blog
+
 original:
   name: He Yeshuang
   homepage: https://heysh.xyz

@@ -2,14 +2,15 @@
 {{- if eq $src nil -}}
   {{- $src := resources.Get .Destination -}}
 {{- end -}}
-{{- $respSizes := slice "640" "960" "1280" "1920" "2160" -}}
-{{- $dataSizes := "(min-width: 1920px) 2160px, (min-width: 1280px) 1920px, (min-width: 960px) 1280px, (min-width: 640px) 960px, 100vw" -}}
+{{- $respSizes := slice "640" "960" "1280" "1920" -}}
+{{- $dataSizes := "(min-width: 1280px) 1920px, (min-width: 960px) 1280px, (min-width: 640px) 960px, 100vw" -}}
 {{/*
 	Then, we create a 640-pixel-wide JPG of the image.
 	This will serve as the "fallback" image for that tiny percentage
 	of browsers that don't understand the HTML `picture` tag.
 */}}
-{{- $actualImg := $src.Resize "640x png q100" -}}
+{{- $filter := images.Process "resize 640x png q100" -}}
+{{- $defaultImage := $src.Filter $filter -}}
 {{/*
 	Now we'll handle the LQIP background for the div that will contain
 	the image content; the conditional at the top controls whether we're
@@ -24,29 +25,26 @@
 	the second option and avoid the conditional altogether.
 */}}
 {{- $imgBd5 := md5 $src -}}
-<div class="relative max-w-full mx-auto rounded overflow-hidden imgB-{{ $imgBd5 }}-LQIP flex flex-col gap-2 items-center">
-{{/*
-	Now we'll build the `picture` which modern browsers use to decide
-	which image, and which format thereof, to show. Remember to put
-	`webp` first, since the browser will use the first format it
-	**can** use, and WebP files usually are smaller. After WebP,
-	the fallback is the universally safe JPG format.
-*/}}
-		<img class="relative w-full h-auto animate-show"
-			src="{{ $actualImg.RelPermalink }}"
-			srcset="
-			{{- with $respSizes -}}
-				{{- range $i, $e := . -}}
-					{{- if ge $src.Width . -}}
-						{{- if $i }}, {{ end -}}{{- ($src.Resize (printf "%sx %s" . "png q100") ).RelPermalink }} {{ . }}w
+<div class="flex flex-col gap-2 items-center mx-auto">
+	<div class="relative max-w-full rounded overflow-hidden imgB-{{ $imgBd5 }}-LQIP backdrop-blur-sm">
+			<img class="relative max-w-full h-auto animate-show"
+				src="{{ $defaultImage.RelPermalink }}"
+				srcset="
+				{{- with $respSizes -}}
+					{{- range $i, $e := . -}}
+						{{- if ge $src.Width . -}}
+							{{- $filter := images.Process (printf "resize %sx %s" . "webp q100") -}}
+							{{- $currentImage := $src.Filter $filter -}}
+							{{- if $i }}, {{ end -}}{{- $currentImage.RelPermalink }} {{ . }}w 
+						{{- end -}}
 					{{- end -}}
-				{{- end -}}
-			{{- end -}}"
-			sizes="{{ $dataSizes }}"
-			width="{{ $src.Width }}"
-			height="{{ $src.Height }}"
-			alt="{{ .Text }}"
-			loading="lazy"
-		/>
-		<span class="text-sm text-gray-600 font-light">{{ .Text }}</span>
+				{{- end -}}"
+				sizes="{{ $dataSizes }}"
+				width="{{ $src.Width }}"
+				height="{{ $src.Height }}"
+				alt="{{ .Text }}"
+				loading="lazy"
+			/>
+	</div>
+	<span class="text-sm text-gray-600 font-light">{{ .Text }}</span>
 </div>
