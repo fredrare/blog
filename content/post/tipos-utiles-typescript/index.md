@@ -90,7 +90,7 @@ type Exclusive<T> = {
 ```
 
 Ya que tenemos una forma práctica de generar uniones con `n` elementos, procederemos a definir cada uno de esos elementos. De acuerdo a lo que hemos visto, cada uno de los elementos será todo lo que vaya luego de `[Key in keyof T]:`, donde `Key` es nuestra llave de iteración que representa cada una de las llaves de `T`. Entonces, comencemos por definir un tipo por cada uno de esos elementos iterativos:
-```javascript
+```typescript
 // Exclusive<T> sería ahora { a: number } | { b: number }
 type Exclusive<T> = {
   [Key in keyof T]: Pick<T, Key>
@@ -98,7 +98,7 @@ type Exclusive<T> = {
 ```
 
 Aquí podemos ver que ya hemos replicado la primera idea que habíamos definido, que era incorrecta. Así que podemos seguir armando la solución. Para ello, no está de más expresar explícitamente que la llave en cuestión será requerida, ya que en cada elemento de la unión resultante, al menos una llave debería ser requerida para poder expresar la exclusividad que buscamos.
-```javascript
+```typescript
 // Exclusive<T> todavía es { a: number } | { b: number }
 type Exclusive<T> = {
   [Key in keyof T]: Required<Pick<T, Key>>
@@ -106,7 +106,7 @@ type Exclusive<T> = {
 ```
 
 En este momento corresponde llenar el resto del elemento de `?: never` por cada una de las otras llaves de T que no son `Key`. Iniciemos simplemente poniendo las otras llaves en una intersección y luego vemos cómo las ponemos con el valor correspondiente:
-```javascript
+```typescript
 // Exclusive<T> es ({ a: number } & "b") | ({ b: number } & "a")
 type Exclusive<T> = {
   [Key in keyof T]:
@@ -116,7 +116,7 @@ type Exclusive<T> = {
 ```
 
 Aquí podemos notar que todavía estamos ante una estructura sin mucho sentido, pero ya tenemos a un lado de la interesección nuestra llave requerida y al otro las negadas. Luego, crear un tipo en lugar de simplemente tener las llaves en unión. Básicamente, en este punto quiero pasar de `"a"` a `{ a: never }`.
-```javascript
+```typescript
 // Exclusive<T> es ({ a: number; b: never }) | ({ b: number; a: never })
 type Exclusive<T> = {
   [Key in keyof T]:
@@ -126,7 +126,7 @@ type Exclusive<T> = {
 ```
 
 Ya tiene casi la forma que esperamos. Ahora solo nos queda hacer que todas las llaves negadas sean opcionales, para que TypeScript no nos obligue a ponerles un valor imposible, ya que todas se encuentran con `never`.
-```javascript
+```typescript
 // Exclusive<T> es ({ a: number; b?: never }) | ({ b: number; a?: never })
 type Exclusive<T> = {
   [Key in keyof T]:

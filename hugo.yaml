@@ -81,6 +81,3 @@ original:
   name: He Yeshuang
   homepage: https://heysh.xyz
   repo: https://github.com/heyeshuang/hugo-theme-tokiwa
-
-module:
-  replacements: github.com/alecthomas/chroma -> github.com/alecthomas/chroma master
