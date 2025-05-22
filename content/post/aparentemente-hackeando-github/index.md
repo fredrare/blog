@@ -1,6 +1,6 @@
 ---
 title: Aparentemente hackeando GitHub
-description: La info de GitHub puede revelar información falsa si no la sabemos interpretar.
+description: GitHub puede revelar *misleading information* si no la sabemos interpretar.
 date: 2025-05-21
 aliases: ["git","github","seguridad","hacking"]
 tags:
