@@ -167,6 +167,7 @@ a:focus {
   list-style-type: "";
   list-style-position: inside;
   counter-reset: item;
+  margin-top: 0.5rem;
 }
 .c-rich-text li > ol,
 .c-rich-text li > ul {
