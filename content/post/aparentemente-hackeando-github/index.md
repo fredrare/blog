@@ -11,7 +11,7 @@ author: Fredrare
 ---
 
 ## Introducción
-Es posible hacer que cualquier usuario de [GitHub](https://github.com) aparezca como "colaborador" de un repositorio. En este artículo, haré que [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds) sea colaborador de un [repositorio random que crearé](https://github.com/fredrare/Fake-collaborators). Obviamente, colocaré un *disclaimer* en el repositorio que indicará claramente que es una prueba de concepto y realmente Linus no tiene ningún tipo de afiliación con el proyecto, para evitar cualquier problema legal. En la siguiente imagen, se puede ver claramente lo que se puede lograr.
+Es posible hacer que cualquier usuario de [GitHub](https://github.com) aparezca como "colaborador" de un repositorio. En este artículo, haré que [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds) sea colaborador de un [repositorio random que crearé](https://github.com/fredrare/Fake-collaborators). Colocaré un *disclaimer* en el repositorio que indicará que es una prueba de concepto y realmente Linus no tiene ningún tipo de afiliación con el proyecto, para evitar cualquier problema legal. En la siguiente imagen, se puede ver lo que lograremos con este ejercicio.
 ![Linus parece ser un colaborador de mi proyecto](contributors-preview.png)
 
 Quiero resaltar, antes de iniciar, que esta no es una falla real de GitHub, ni `git` en general. Por el contrario, por diseño, `git` permite definir el autor de un *commit* manualmente, por cuestiones de usabilidad. No obstante, es posible tener certeza de que una persona sí ha hecho un *commit* de forma intencional a través de *commits* firmados. Por lo tanto, también mostraré cómo se pueden diferenciar ambos casos y cómo implementar la firma de *commits* en un ambiente local.
@@ -54,14 +54,14 @@ Y todo en GitHub, como siempre. Este es un *commit* estándar, sin nada especial
 ![El repositorio muestra mi commit, como siempre](repo-initialized.png)
 
 ### Hacer una modificación en el `README.md`
-Ahora colocaré una sección extra en el `README.md`. Solo mencionaré que Linus Torvalds no es un colaborador del repo.
+Ahora colocaré una sección extra en el `README.md` y mencionaré que Linus Torvalds no es un colaborador del repo.
 ```md
 ## Disclaimer
 Linus Torvalds is not a collaborator of this repo, but appears as such on the side bar.
 ```
 
 ### Hacer un *commit* como Linus
-Solo es necesario agregar un parámetro al comando de *commit* para poder impersonar a Linus. Solo pondré `--author` seguido de cierta información del autor. No publicaré su correo, pese a que es público. Si lo quieren, búsquenlo 💀
+Solo necesitamos agregar un parámetro al comando de *commit* para poder impersonar a Linus. Pondré `--author` seguido de cierta información del autor. No publicaré su correo, pese a que es público. Si lo quieren, búsquenlo 💀
 ```bash
 git add .
 git commit -m "README.md created" --author "Linus Torvalds <linus@example.com>"
@@ -75,7 +75,7 @@ Podemos ver que ahora Linus aparece como un colaborador 100% real.
 Ahora, veamos con un poco más de detalle qué nos dice GitHub al respecto.
 ![Listado de commits hasta el momento](first-commit-list.png)
 
-Podemos ver claramente que GitHub indica que Linus fue el autor y que yo hice el *commit*. Esto ya debería indicarnos que ver a un colaborador de esa manera en un repositorio **no indica** que realmente haya sido el autor de nada. No obstante, en la *graaaaaaaan* mayoría de casos, la verdad es que los colaboradores sí son verdaderos. Pero entendamos que ese mensaje realmente no nos da **certeza**.
+Podemos ver claramente que GitHub indica que Linus fue el autor y que yo hice el *commit*. Esto ya debería indicarnos que ver a un colaborador de esa manera en un repositorio **no indica** que realmente haya sido el autor de nada. No obstante, en la *graaaaaaaan* mayoría de casos, los colaboradores sí son reales. Pero entendamos que ese mensaje realmente no nos da **certeza**.
 
 ### Configurar la firma de *commits* en mi máquina
 Dado que para hacer push desde mi máquina requiero haber configurado mi llave SSH previamente en GitHub, solo usaré la misma para poder firmar mis *commits*.
